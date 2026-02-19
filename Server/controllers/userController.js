@@ -1,8 +1,8 @@
 import userModel from "../models/userModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import razorpay from "razorpay";
-import transactionModel from "../models/transactionModel.js";
+// import razorpay from "razorpay";
+// import transactionModel from "../models/transactionModel.js";
 
 //user ke registration ke liye function//
  const registerUser = async (req, res) => {
@@ -57,11 +57,11 @@ import transactionModel from "../models/transactionModel.js";
 }
 
 const userCredits =  async (req, res) => {
-    
-    console.log(req.body)
+    console.log("request credit function me ayaaaaaaaaaaaaaaaaaaaaa" )
     console.log("user credits function called")
     try {
-        const {userId} = req.body;
+        // const {userId} = req.body;
+        const userId = req.user.id;
          console.log(userId)
         const user = await userModel.findById(userId)
         console.log(user)

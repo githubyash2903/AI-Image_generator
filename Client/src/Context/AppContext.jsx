@@ -18,14 +18,20 @@ const [credit , setCredit] = useState(false);
  const  navigate = useNavigate();
  
  const loadCreditsData = async () => {
-    console.log(token);
+    // console.log(token);
     try {
     const { data } = await axios.post(
   backendUrl + '/api/user/credits',
   {}, // body (empty or with data if needed)
   {
-    headers: { token }
+    headers: {Authorization: `Bearer ${token}` }
+
   }
+
+// headers: {
+//   Authorization: `Bearer ${token}`,
+// }
+
 
 );
         console.log(data);
@@ -48,8 +54,8 @@ const generateImage = async (prompt) => {
         backendUrl + '/api/image/generate-image',
         { prompt },
         {
-            headers: { token }
-        }
+         headers: {Authorization: `Bearer ${token}` }
+       }
         );
         if (data.success) {
           loadCreditsData();
@@ -98,3 +104,4 @@ useEffect(() => {
 }
 
 export default AppContextProvider 
+

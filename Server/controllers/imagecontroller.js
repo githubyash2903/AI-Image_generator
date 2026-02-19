@@ -1,7 +1,7 @@
 import userModel from "../models/userModel.js";
 import FormData from "form-data";
 import axios from "axios";
-import { response } from "express"; 
+
 
 
 
@@ -9,8 +9,9 @@ import { response } from "express";
 export const generateImage = async (req, res) => {
 try {
 
-    const {userId, prompt} = req.body;
-
+    const {prompt} = req.body;
+  const userId = req.user.id;
+    console.log(prompt);
     const user = await userModel.findById(userId);
     if (!user || !prompt) {
         return res.json({success: false, message: 'Missing Details'});
